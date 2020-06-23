@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../CSS/calculator.css';
 
 const Calculator = () => {
   const [currentOperand, setCurrentOperand] = useState('');
@@ -29,84 +30,98 @@ const Calculator = () => {
     let result;
     switch (operand) {
       case '/':
-        result =
-          parseFloat(prevOperand) / parseFloat(currentOperand).toFixed(6);
-        setResult(result.toFixed(6));
+        result = Number(prevOperand) / Number(currentOperand);
+        setResult(result);
         break;
       case '*':
-        result =
-          parseFloat(prevOperand) * parseFloat(currentOperand).toFixed(6);
-        setResult(result.toFixed(6));
+        result = Number(prevOperand) * Number(currentOperand);
+        setResult(result);
         break;
       case '-':
-        result =
-          parseFloat(prevOperand) - parseFloat(currentOperand).toFixed(6);
-        setResult(result.toFixed(6));
+        result = Number(prevOperand) - Number(currentOperand);
+        setResult(result);
         break;
       case '+':
-        result =
-          parseFloat(prevOperand) + parseFloat(currentOperand).toFixed(6);
-        setResult(result.toFixed(6));
+        result = Number(prevOperand) + Number(currentOperand);
+        setResult(result);
         break;
       default:
         break;
     }
   };
   return (
-    <div>
-      <div>Current Operand: {currentOperand}</div>
-      <div>
+    <div className="calculator">
+      <div className="current-operand">Current Operand: {currentOperand}</div>
+      <div className="previous-operand">
         Previous Operand: {prevOperand}
         {operand}
+        {result ? currentOperand : ''}
+        {result ? '=' : ''}
       </div>
-      <div>Result: {result}</div>
-      <button value="1" onClick={handleInput}>
+      <div className="result">Result: {result}</div>
+      <button className="number number-1" value="1" onClick={handleInput}>
         1
       </button>
-      <button value="2" onClick={handleInput}>
+      <button className="number number-2" value="2" onClick={handleInput}>
         2
       </button>
-      <button value="3" onClick={handleInput}>
+      <button className="number number-3" value="3" onClick={handleInput}>
         3
       </button>
-      <button value="4" onClick={handleInput}>
+      <button className="number number-4" value="4" onClick={handleInput}>
         4
       </button>
-      <button value="5" onClick={handleInput}>
+      <button className="number number-5" value="5" onClick={handleInput}>
         5
       </button>
-      <button value="6" onClick={handleInput}>
+      <button className="number number-6" value="6" onClick={handleInput}>
         6
       </button>
-      <button value="7" onClick={handleInput}>
+      <button className="number number-7" value="7" onClick={handleInput}>
         7
       </button>
-      <button value="8" onClick={handleInput}>
+      <button className="number number-8" value="8" onClick={handleInput}>
         8
       </button>
-      <button value="9" onClick={handleInput}>
+      <button className="number number-9" value="9" onClick={handleInput}>
         9
       </button>
-      <button value="0" onClick={handleInput}>
+      <button className="number number-0" value="0" onClick={handleInput}>
         0
       </button>
-      <button value="." onClick={handleInput}>
+      <button className="number number-dot" value="." onClick={handleInput}>
         .
       </button>
-      <button onClick={allClear}>AC</button>
-      <button value="/" onClick={handleOperand}>
+      <button className="all-clear" onClick={allClear}>
+        AC
+      </button>
+      <button
+        className="operand operand-divide"
+        value="/"
+        onClick={handleOperand}
+      >
         /
       </button>
-      <button value="*" onClick={handleOperand}>
+      <button
+        className="operand operand-multiply"
+        value="*"
+        onClick={handleOperand}
+      >
         *
       </button>
-      <button value="-" onClick={handleOperand}>
+      <button
+        className="operand operand-subtract"
+        value="-"
+        onClick={handleOperand}
+      >
         -
       </button>
-      <button value="+" onClick={handleOperand}>
+      <button className="operand operand-add" value="+" onClick={handleOperand}>
         +
       </button>
-      <button onClick={makeComputation}>=</button>
+      <button className="operand operand-equals" onClick={makeComputation}>
+        =
+      </button>
     </div>
   );
 };

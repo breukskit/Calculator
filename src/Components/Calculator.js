@@ -65,7 +65,6 @@ const Calculator = () => {
         {operand}
         {result ? thirdOperand + '=' : ''}
       </div>
-      <div className="result"></div>
       <button className="number number-1" value="1" onClick={handleInput}>
         1
       </button>

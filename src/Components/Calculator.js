@@ -4,6 +4,7 @@ import '../CSS/calculator.css';
 const Calculator = () => {
   const [currentOperand, setCurrentOperand] = useState('');
   const [prevOperand, setprevOperand] = useState('');
+  const [thirdOperand, setThirdOperand] = useState('');
   const [operand, setOperand] = useState('');
   const [result, setResult] = useState();
 
@@ -19,8 +20,13 @@ const Calculator = () => {
     setprevOperand('');
     setOperand('');
     setResult('');
+    setThirdOperand('');
   };
   const handleOperand = (e) => {
+    if (currentOperand !== '') {
+      setprevOperand(currentOperand);
+      setResult('');
+    }
     const { value } = e.target;
     setprevOperand(currentOperand);
     setCurrentOperand('');
@@ -48,6 +54,7 @@ const Calculator = () => {
       default:
         break;
     }
+    setThirdOperand(currentOperand);
     setCurrentOperand(result);
   };
   return (
@@ -56,7 +63,7 @@ const Calculator = () => {
       <div className="previous-operand">
         {prevOperand}
         {operand}
-        {result ? '=' : ''}
+        {result ? thirdOperand + '=' : ''}
       </div>
       <div className="result"></div>
       <button className="number number-1" value="1" onClick={handleInput}>

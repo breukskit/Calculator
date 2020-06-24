@@ -48,17 +48,17 @@ const Calculator = () => {
       default:
         break;
     }
+    setCurrentOperand(result);
   };
   return (
     <div className="calculator">
-      <div className="current-operand">Current Operand: {currentOperand}</div>
+      <div className="current-operand">{currentOperand}</div>
       <div className="previous-operand">
-        Previous Operand: {prevOperand}
+        {prevOperand}
         {operand}
-        {result ? currentOperand : ''}
         {result ? '=' : ''}
       </div>
-      <div className="result">Result: {result}</div>
+      <div className="result"></div>
       <button className="number number-1" value="1" onClick={handleInput}>
         1
       </button>
